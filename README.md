@@ -10,3 +10,4 @@ Icon- olympic-games.png <div>Icons made by <a href="https://www.flaticon.com/aut
 
 Olympics API https://olympicsapi.docs.apiary.io/#reference/olympics/country/list-all-olympic-games
 
+Wiki API https://www.mediawiki.org/wiki/API:Main_page
