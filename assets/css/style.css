@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url("./images/Beerbg.png");
+}
+
+header {
+    width: 100%;
+    height: 40px;
+    padding: 40px;
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+input {
+    display: block;
+}
+
+button {
+    display: block;
+}
+
+main {
+    max-width: 80%;
+    margin: 40px auto;
+    background-color: aliceblue;
+    display: flex;
+}
+
+section {
+    display: flex block;
+    margin: 20px;
+}
+
+article {
+    width: 100%;
+    margin: 40px;
+}
+
+.side-bar {
+    width: 25%;
+    background-color: aqua;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-section {
+    width: 75%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+    
