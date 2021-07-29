@@ -17,19 +17,19 @@
 
     <main>
       <section class="side-bar">
-        <form action="">
+        <form id="searchForm">
           <label for="city">Enter Your City:</label>
-          <input type="text" name="city">
+          <input type="text" name="city" id ="citySearch" placeholder="Search a city!">
           <label for="state">Enter Your State:</label>
-          <input type="text" name="state">
+          <input type="text" name="state" id="stateSearch" placeholder="Search a state!">
           <button type="submit">Submit</button>
         </form>
       </section>
       <section class="main-section">
         <article>
           <h2>Hometown Brewery</h2>
-          <h4>Brewery Name</h4>
-          <p>Brewery Information</p>
+          <h4 id = "BreweryHeader">Brewery Name</h4>
+          <ul id = "breweryInfo">Brewery Information</ul>
         </article>
         <article>
           <h2>Hometown Restaurant</h2>
