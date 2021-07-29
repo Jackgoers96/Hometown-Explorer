@@ -5,7 +5,6 @@
 }
 
 body {
-    width: 100%;
     background-image: url("../images/Beerbg.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,9 +13,8 @@ body {
 }
 
 header {
-    max-width: 80%;
-    margin: 40px auto;
-    height: 40px;
+    max-width: 1440px;
+    margin: 30px auto;
     text-align: left;
 }
 
@@ -37,24 +35,20 @@ input {
     height: 2em;
 }
 
-button {
-    display: block;
-    margin: 10px 0;
-    padding: 5px;
+.pure-button {
+    margin: 20px 0;
     background-color: #566357;
     color: white;
 }
 
 main {
-    max-width: 80%;
-    margin: 40px auto;
-    display: flex;
+    max-width: 1440px;
+    margin: 100px auto;
+
 }
 
 section {
-    display: flex block;
-    margin: 10px;
-    padding: 0 0 20px 0;
+    margin: 0 10px;
     border-radius: 10px;
     background-color: #FFD98E;
 }
@@ -68,16 +62,3 @@ article {
     width: 100%;
     margin: 20px;
 }
-
-.side-bar {
-    width: 25%;
-    flex-direction: column;
-    align-items: center;
-}
-
-.main-section {
-    width: 75%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-    
