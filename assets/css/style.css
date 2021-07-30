@@ -6,6 +6,7 @@
 
 body {
     background-image: url("../images/Beerbg.png");
+    background-size: cover;
     max-width: 1200px;
     margin: 0 auto;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
