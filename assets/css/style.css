@@ -5,83 +5,81 @@
 }
 
 body {
-    width: 100%;
     background-image: url("../images/Beerbg.png");
-    background-repeat: no-repeat;
     background-size: cover;
+    max-width: 1200px;
+    margin: 0 auto;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
 }
 
 header {
-    max-width: 80%;
-    margin: 40px auto;
-    height: 40px;
+    margin: 30px 0;
+    padding: 0 10px;;
     text-align: left;
 }
 
+header p {
+    max-width: 550px;
+}
+
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
+    padding: 20px;
 }
 
 label {
-    display: block;
     padding: 10px 0;
 }
 
 input {
-    display: block;
     height: 2em;
 }
 
-button {
-    display: block;
-    margin: 10px 0;
-    padding: 5px;
+.pure-button {
+    margin: 20px 0;
     background-color: #566357;
     color: white;
 }
 
 main {
-    max-width: 80%;
-    margin: 40px auto;
-    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
 }
 
 section {
-    display: flex block;
     margin: 10px;
-    padding: 0 0 20px 0;
     border-radius: 10px;
     background-color: #FFD98E;
 }
 
-h2,
+h2 {
+    display:inline;
+    padding: 10px 0;
+}
+
 h4 {
     padding: 10px 0;
 }
 
 article {
     width: 100%;
-    margin: 20px;
+    padding: 20px;
 }
 
-.side-bar {
-    width: 25%;
-    flex-direction: column;
-    align-items: center;
+
+i {
+    margin: 0 20px;
+    font-size: 24px;
+    color: grey;
 }
 
-.main-section {
-    width: 75%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.breweryLinkEl { 
-    text-decoration: none;
-    color:black;
 
+
+.favs-btn {
+    background-color: #FA8125;
 }
+
+/* select {
+    height: 100px;/* you can change as you need it */
+    overflow-y: scroll;/* to get scroll */
+} 
