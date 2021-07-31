@@ -9,52 +9,62 @@ Pseudocode area
 
 $('#searchForm').on('submit', function(e){
     e.preventDefault();
-    var city = $('#citySearch').val();
-    var state = $('#stateSearch').val();
-    var cityListEl = $('<li>').text(city);
-    var openTableURL = "https://opentable.herokuapp.com/api" + city
-  fetch(openTableURL)
+    var zip = $('#citySearch').val();
+
+    var documenuURL = "https://api.documenu.com/v2/restaurant/4072702673999819?key=0078f0df6388023e57146b690339b490";
+
+    fetch(documenuURL)
   .then(function(response){
     return response.json()
   })
-  .then(function(data) {
-    buildRestaurantResults(data)
+  .then(function(restaurantResponse) {
+    console.log(restaurantResponse)
+
+    buildRestaurantResults(RestaurantResponse.data)
    })
   .catch(function(error){
-     console.log('Error while fetching:', error);
-  });
+    console.log('Error while fetching:', error);
   })
+  });
+
   function buildRestaurantResults(data) {
    $("#restaurantHeader").empty();
    $("#restaurantInfo").empty();
-    console.log(data);
+     console.log(data);
 
   var restaurantNumber = (Math.round((Math.random() * data.length-1)));
     console.log(restaurantNumber);
-  var selectedRestaurant = data[restaurantNumber].name;
-  var restaurantPrice = data[restaurantNumber].price;
-  var restaurantAddress = data[restaurantNumber].address;
-  var restaurantContact = data[restaurantNumber].phone;
-  var restaurantReservation = data[restaurantNumber].reserve_url;
+
+  var selectedRestaurant = data[restaurantNumber].restaurant_name;
+  var restaurantCuisines = data[restaurantNumber].restaurant_id.cuisines;
+  var restaurantPriceRange = data[restaurantNumber].price_range;
+  var restaurantAddress = data[restaurantNumber].restaurant_id.address;
+  var restaurantContact = data[restaurantNumber].restaurant_phone;
+  var restaurantWebsite = data[restaurantNumber].restaurant_website;
   restaurantEl = $('<ul>');
+  cuisinesEl = $('<li>')
   priceEl = $('<li>');
   addressEl = $('<li>');
   contactEl = $('<li>');
-  restaurantReservationEl = $('<li><a href="'+reserve_url+'" >'+reserve_url+'</a></li>');
+  restaurantWebsiteEl = $('<li><a href="'+restaurantWebsite+'" >'+restaurantWebsite+'</a></li>');
   restaurantEl.addClass('.info');
+  cuisinesEl.addClass('.info');
   priceEl.addClass('.infoSub');
   addressEl.addClass('.infoSub');
   contactEl.addClass('.infoSub');
-  restaurantReservationEl.addClass('.infoSub');
-  restaurantReservationEl.addClass('.restaurantReservationEl');
+  restaurantWebsiteEl.addClass('.infoSub');
+  restaurantWebsiteEl.addClass('.restaurantWebsiteEl');
   restaurantEl.text(selectedRestaurant);
-  typeEl.text("Restaurant Price Range From 1 Being the Least Expensive to 4 Being the Most: " + restaurantPrice);
+  cuisinesEl.text("Food Offerings: " + restaurantCuisines);
+  typeEl.text("Restaurant Price Range From 1 Being the Least Expensive to 4 Being the Most: " + restaurantPriceRange);
   addressEl.text("Address: " + restaurantAddress);
   contactEl.text("Phone #: " + restaurantContact);
-  $('#restaurantHeader').append(restaurantEl);
+  $("#restaurantHeader").append(restaurantEl);
+  $("#restaurantInfo").append(cuisinesEl)
   $("#restaurantInfo").append(priceEl);
   $("#restaurantInfo").append(addressEl);
   $("#restaurantInfo").append(contactEl);
+  $("#restaurantInfo").append(restaurantWebsiteEl);
   $("#restaurantInfo").append(restaurantReservationEl);
   }
 
@@ -117,6 +127,7 @@ console.log(favorites);
 
         f.setAttribute("hidden", "");
     })
+
 
 $('#searchForm').on('submit', function(e){
   e.preventDefault();
