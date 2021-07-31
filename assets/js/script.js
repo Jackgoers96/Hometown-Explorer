@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
 /*
 Pseudocode area
 1:Get the page elements
@@ -60,7 +56,6 @@ $('#searchForm').on('submit', function(e){
   $("#restaurantInfo").append(contactEl);
   $("#restaurantInfo").append(restaurantReservationEl);
   }
->>>>>>> f725db2f488d1e2c03f27971478408cae6f3a1e7
 
 
 
@@ -78,7 +73,6 @@ $('#searchForm').on('submit', function(e){
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -192,24 +186,7 @@ $('#searchForm').on('submit', function(e){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// leslie's script
+// leslie's
 var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 console.log(favorites);
 
@@ -268,7 +245,7 @@ console.log(favorites);
 
         f.setAttribute("hidden", "");
     })
-=======
+
 $('#searchForm').on('submit', function(e){
   e.preventDefault();
   var city = $('#citySearch').val();
@@ -337,4 +314,3 @@ $("#breweryInfo").append(contactEl);
 $("#breweryInfo").append(breweryLinkEl);
 }
 
->>>>>>> f725db2f488d1e2c03f27971478408cae6f3a1e7

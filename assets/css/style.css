@@ -79,15 +79,9 @@ i {
     background-color: #FA8125;
 }
 
-<<<<<<< HEAD
 
 i:hover {
  color: red;
  cursor: pointer;
 }
-=======
-/* select {
-    height: 100px;/* you can change as you need it */
-    overflow-y: scroll;/* to get scroll */
-} 
->>>>>>> f725db2f488d1e2c03f27971478408cae6f3a1e7
+
