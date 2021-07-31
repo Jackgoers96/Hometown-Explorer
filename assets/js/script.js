@@ -57,6 +57,7 @@ $('#searchForm').on('submit', function(e){
   $("#restaurantInfo").append(restaurantReservationEl);
   }
 
+<<<<<<< HEAD
 
 
 
@@ -186,6 +187,8 @@ $('#searchForm').on('submit', function(e){
 
 
 
+=======
+>>>>>>> ac9f90f94aab93f208cdc579ead89184bb31937e
 // leslie's
 var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 console.log(favorites);
