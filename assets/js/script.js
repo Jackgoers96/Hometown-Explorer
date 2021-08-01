@@ -96,7 +96,7 @@ console.log(favorites);
 
 // Set an event listener to save favorited brewery name to local storage
 $("#brew-fav-btn").on("click", function () {
-  var fav = $(".brew-fav-data").text();
+  var fav = $("#breweryHeader").text();
   console.log(fav);
 
   // Save input in local storage
@@ -107,7 +107,7 @@ $("#brew-fav-btn").on("click", function () {
 
 // Set an event listener to save favorited restaurant name to local storage
 $("#resto-fav-btn").on("click", function () {
-  var fav = $(".resto-fav-data").text();
+  var fav = $("#restaurantHeader").text();
 
   // Save input in local storage
   favorites.push(fav).text;
@@ -144,8 +144,10 @@ function createFavoriteList() {
 $("#close-favs").on("click", function (event) {
   event.preventDefault();
   var f = document.getElementById("favorites-info");
+  var r = document.getElementById("random-info");
 
   f.setAttribute("hidden", "");
+  r.removeAttribute("hidden");
 });
 
 $("#searchForm").on("submit", function (e) {
