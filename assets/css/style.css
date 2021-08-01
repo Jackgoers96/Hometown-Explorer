@@ -80,12 +80,13 @@ i {
 }
 
 
+
 i:hover {
  color: red;
  cursor: pointer;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ac9f90f94aab93f208cdc579ead89184bb31937e
+a:-webkit-any-link {
+    text-decoration: none;
+    color: black;
+}
