@@ -86,4 +86,7 @@ i:hover {
  cursor: pointer;
 }
 
-
+a:-webkit-any-link {
+    text-decoration: none;
+    color: black;
+}
