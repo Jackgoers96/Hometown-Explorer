@@ -26,7 +26,7 @@ $("#searchForm").on("submit", function (e) {
     url: "https://documenu.p.rapidapi.com/restaurants/zip_code/" + zip,
     method: "GET",
     headers: {
-      "x-api-key": "0078f0df6388023e57146b690339b490",
+      "x-api-key": "7f6e218886bdd6f0fce9dc02dfb05fb8",
       "x-rapidapi-key": "1bdc3065cbmsh2c702c1ffdb66ccp134e9ejsnbef151daa780",
       "x-rapidapi-host": "documenu.p.rapidapi.com",
     },
@@ -44,7 +44,7 @@ function buildRestaurantResults(data) {
   $("#restaurantInfo").empty();
   console.log(data);
   //this math variable selects a restaurant at random by using math.random on the list of api results from the search data, which is used later
-  var restaurantNumber = Math.round(Math.random() * data.length - 1);
+  var restaurantNumber = Math.round(Math.random() * (data.length - 1));
   console.log(restaurantNumber);
   //variables below use the selected restaurant to grab sub data
   var selectedRestaurant = data[restaurantNumber].restaurant_name;
@@ -139,11 +139,11 @@ function createFavoriteList() {
   if (favorites.length === 0) {
     return;
   } else {
-      $("#list-container").empty();
-      $("#list-container").html("<h2>My Favorites:</h2");
-      var l = JSON.parse(localStorage.getItem("favorites"));
-      console.log(l);
-      for (let i = 0; i < l.length; i++) {
+    $("#list-container").empty();
+    $("#list-container").html("<h2>My Favorites:</h2");
+    var l = JSON.parse(localStorage.getItem("favorites"));
+    console.log(l);
+    for (let i = 0; i < l.length; i++) {
       var h4 = $("<h4>");
       var text = l[i];
       h4.text(text);
@@ -164,11 +164,11 @@ $("#close-favs").on("click", function (event) {
 //same as restaurant onClick. redundant function due to split work- could clean up later
 $("#searchForm").on("submit", function (e) {
   e.preventDefault();
-  //city variable used instead of zip, due to initially wanting to use city before pivoting on one of our APIs.
-  var city = $("#citySearch").val();
+  //zip variable used to grab the postal code from data and dsiplay results in the function
+  var zip = $("#citySearch").val();
   //establisheds the API data+user input as a variable
   var openBrewURL =
-    "https://api.openbrewerydb.org/breweries/search?query=" + city;
+    "https://api.openbrewerydb.org/breweries/search?query=" + zip;
   //fetches data and sends to the next function
   fetch(openBrewURL)
     .then(function (response) {
@@ -189,12 +189,13 @@ function buildBreweryResults(data) {
 
   console.log(data);
   //this math variable selects a brewery at random by using math.random on the list of api results from the search data, which is used later
-  var breweryNumber = Math.round(Math.random() * data.length - 1);
+  var breweryNumber = Math.round(Math.random() * (data.length - 1));
   console.log(breweryNumber);
   //collecting sub-data by using the randomly selected brewery
   var selectedBrewery = data[breweryNumber].name;
   var breweryType = data[breweryNumber].brewery_type;
   var breweryCity = data[breweryNumber].city;
+  var breweryPostal = data[breweryNumber].postal_code;
   var breweryAddress = data[breweryNumber].street;
   var breweryContact = data[breweryNumber].phone;
   var breweryWebpage = data[breweryNumber].website_url;
@@ -202,6 +203,7 @@ function buildBreweryResults(data) {
   breweryEl = $("<ul>");
   typeEl = $("<li>");
   cityEl = $("<li>");
+  postalEl = $("<li>");
   addressEl = $("<li>");
   contactEl = $("<li>");
   breweryLinkEl = $(
@@ -215,6 +217,7 @@ function buildBreweryResults(data) {
   breweryEl.addClass(".info");
   typeEl.addClass(".infoSub");
   cityEl.addClass(".infoSub");
+  postalEl.addClass(".infoSub");
   addressEl.addClass(".infoSub");
   contactEl.addClass(".infoSub");
   breweryLinkEl.addClass(".infoSub");
@@ -222,6 +225,7 @@ function buildBreweryResults(data) {
   breweryEl.text(selectedBrewery);
   typeEl.text("Brewery Type: " + breweryType);
   cityEl.text("City: " + breweryCity);
+  postalEl.text("Zip Code: " + breweryPostal);
   addressEl.text("Street: " + breweryAddress);
   contactEl.text("Phone #: " + breweryContact);
 
@@ -229,6 +233,7 @@ function buildBreweryResults(data) {
   $("#breweryHeader").append(breweryEl);
   $("#breweryInfo").append(typeEl);
   $("#breweryInfo").append(cityEl);
+  $("#breweryInfo").append(postalEl);
   $("#breweryInfo").append(addressEl);
   $("#breweryInfo").append(contactEl);
   $("#breweryInfo").append(breweryLinkEl);
