@@ -138,9 +138,13 @@ function createFavoriteList() {
   if (favorites.length === 0) {
     return;
   } else {
-    for (let i = 0; i < favorites.length; i++) {
+      $("#list-container").empty();
+      $("#list-container").html("<h2>My Favorites:</h2");
+      var l = JSON.parse(localStorage.getItem("favorites"));
+      console.log(l);
+      for (let i = 0; i < l.length; i++) {
       var h4 = $("<h4>");
-      var text = favorites[i];
+      var text = l[i];
       h4.text(text);
       $("#list-container").append(h4);
     }
