@@ -206,13 +206,18 @@ function buildBreweryResults(data) {
   postalEl = $("<li>");
   addressEl = $("<li>");
   contactEl = $("<li>");
-  breweryLinkEl = $(
-    '<li><a target=_blank href="' +
-      breweryWebpage +
-      '" >' +
-      breweryWebpage +
-      "</a></li>"
-  );
+  if (breweryWebpage == null) {
+    breweryLinkEl = $("<li>*No webpage available*</li>");
+  } else {
+    breweryLinkEl = $(
+      '<li><a target=_blank href="' +
+        breweryWebpage +
+        '" >' +
+        breweryWebpage +
+        "</a></li>"
+    );
+  }
+
   //establishing classes to style the posted data
   breweryEl.addClass(".info");
   typeEl.addClass(".infoSub");
@@ -221,7 +226,7 @@ function buildBreweryResults(data) {
   addressEl.addClass(".infoSub");
   contactEl.addClass(".infoSub");
   breweryLinkEl.addClass(".infoSub");
-  breweryLinkEl.addClass(".breweryLinkEl");
+  // breweryLinkEl.addClass(".breweryLinkEl");
   breweryEl.text(selectedBrewery);
   typeEl.text("Brewery Type: " + breweryType);
   cityEl.text("City: " + breweryCity);
