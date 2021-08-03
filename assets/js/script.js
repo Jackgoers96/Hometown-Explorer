@@ -3,13 +3,18 @@ function unhideSection() {
   var r = document.getElementById("random-info");
   r.removeAttribute("hidden", "");
 }
+
+function hideSection() {
+  var f = document.getElementById("favorites-info");
+  f.setAttribute("hidden", "");
+}
+
 //functon takes the search value, plugs into api and fetches appropriate data, then pasting to the page
 //onclick to start function
 $("#searchForm").on("submit", function (e) {
   e.preventDefault();
-  // var r = document.getElementById("random-info");
 
-  // r.removeAttribute("hidden", "");
+
   //started with city, changed to zip. Clean up later--
   var zip = $("#citySearch").val();
 
@@ -87,6 +92,7 @@ function buildRestaurantResults(data) {
   // $("#restaurantInfo").append(restaurantReservationEl);
 
   unhideSection();
+  hideSection();
 }
 
 // leslie's
@@ -148,7 +154,7 @@ $("#close-favs").on("click", function (event) {
   var r = document.getElementById("random-info");
 
   f.setAttribute("hidden", "");
-  r.removeAttribute("hidden");
+  r.setAttribute("hidden", "");
 });
 //same as restaurant onClick. redundant function due to split work- could clean up later
 $("#searchForm").on("submit", function (e) {
