@@ -4,7 +4,7 @@ Project One Starting Repo
 
 ## Preview
 
-![demo](assets/images/demo.jpg)
+![demo](assets/images/demos.jpg)
 
 contributions:
 
