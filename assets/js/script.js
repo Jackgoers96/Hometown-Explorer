@@ -87,7 +87,6 @@ function buildRestaurantResults(data) {
   $("#restaurantInfo").append(addressEl);
   $("#restaurantInfo").append(contactEl);
   $("#restaurantInfo").append(restaurantWebsiteEl);
-  $("#restaurantInfo").append(restaurantReservationEl);
 }
 
 // leslie's
