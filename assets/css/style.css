@@ -87,9 +87,10 @@ i:hover {
 
 a:-webkit-any-link {
     text-decoration: underline;
-    color:blue;
+    color:#566357;
     font-weight: bold;
 }
+
 .header-container {
     display: flex;
     flex-direction: row;
