@@ -1,14 +1,19 @@
-/*
-Pseudocode area
-1:Get the page elements
-2:load apis
-3: place items in appropriate divs
-4:
-*/
+//function to unhide section where results are stored
+function unhideSection() {
+  var r = document.getElementById("random-info");
+  r.removeAttribute("hidden", "");
+}
+//functon takes the search value, plugs into api and fetches appropriate data, then pasting to the page
+//onclick to start function
 $("#searchForm").on("submit", function (e) {
   e.preventDefault();
+  // var r = document.getElementById("random-info");
+
+  // r.removeAttribute("hidden", "");
+  //started with city, changed to zip. Clean up later--
   var zip = $("#citySearch").val();
 
+  //fetches restaurant data
   const documenuURL = {
     async: true,
     crossDomain: true,
@@ -20,40 +25,29 @@ $("#searchForm").on("submit", function (e) {
       "x-rapidapi-host": "documenu.p.rapidapi.com",
     },
   };
-
+  //sends restaurant data to the restaurant builder
   $.ajax(documenuURL).done(function (response) {
     console.log(response.data);
     buildRestaurantResults(response.data);
   });
-
-  // fetch(documenuURL)
-  //   .then(function (response) {
-  //     return response.json();
-  //   })
-  //   .then(function (restaurantResponse) {
-  //     console.log(restaurantResponse);
-
-  //     buildRestaurantResults(restaurantResponse.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error while fetching:", error);
-  //   });
 });
-
+//restaurant data function- pastes to page
 function buildRestaurantResults(data) {
+  //clears the area after a new search
   $("#restaurantHeader").empty();
   $("#restaurantInfo").empty();
   console.log(data);
-
+  //this math variable selects a restaurant at random by using math.random on the list of api results from the search data, which is used later
   var restaurantNumber = Math.round(Math.random() * data.length - 1);
   console.log(restaurantNumber);
-
+  //variables below use the selected restaurant to grab sub data
   var selectedRestaurant = data[restaurantNumber].restaurant_name;
   // var restaurantCuisines = data[restaurantNumber].cuisines;
   var restaurantPriceRange = data[restaurantNumber].price_range;
   var restaurantAddress = data[restaurantNumber].address.formatted;
   var restaurantContact = data[restaurantNumber].restaurant_phone;
   var restaurantWebsite = data[restaurantNumber].restaurant_website;
+  //creating a list to apply the data to
   restaurantEl = $("<ul>");
   // cuisinesEl = $("<li>");
   priceEl = $("<li>");
@@ -66,6 +60,7 @@ function buildRestaurantResults(data) {
       restaurantWebsite +
       "</a></li>"
   );
+  //add classes to play with how the info looks
   restaurantEl.addClass(".info");
   // cuisinesEl.addClass(".info");
   priceEl.addClass(".infoSub");
@@ -79,6 +74,8 @@ function buildRestaurantResults(data) {
     "Restaurant Price Range From 1 Being the Least Expensive to 4 Being the Most: " +
       restaurantPriceRange
   );
+
+  //pasting the collected info to give the user intended results
   addressEl.text("Address: " + restaurantAddress);
   contactEl.text("Phone #: " + restaurantContact);
   $("#restaurantHeader").append(restaurantEl);
@@ -87,9 +84,14 @@ function buildRestaurantResults(data) {
   $("#restaurantInfo").append(addressEl);
   $("#restaurantInfo").append(contactEl);
   $("#restaurantInfo").append(restaurantWebsiteEl);
+  // $("#restaurantInfo").append(restaurantReservationEl);
+
+  unhideSection();
 }
 
 // leslie's
+//favorites tool--
+//uses local storaage to find any favorited items and displayed
 var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 console.log(favorites);
 
@@ -148,13 +150,15 @@ $("#close-favs").on("click", function (event) {
   f.setAttribute("hidden", "");
   r.removeAttribute("hidden");
 });
-
+//same as restaurant onClick. redundant function due to split work- could clean up later
 $("#searchForm").on("submit", function (e) {
   e.preventDefault();
+  //city variable used instead of zip, due to initially wanting to use city before pivoting on one of our APIs.
   var city = $("#citySearch").val();
+  //establisheds the API data+user input as a variable
   var openBrewURL =
     "https://api.openbrewerydb.org/breweries/search?query=" + city;
-
+  //fetches data and sends to the next function
   fetch(openBrewURL)
     .then(function (response) {
       return response.json();
@@ -165,28 +169,25 @@ $("#searchForm").on("submit", function (e) {
     .catch(function (error) {
       console.log("Error while fetching:", error);
     });
-
-  // localStorage.getItem(buildBreweryResults);
-  // localStorage.setItem(cityListEl, buildBreweryResults);
-
-  // cityButton.text = $('#searchBar').val();
-  // $('searchResults').append.cityButton;
 });
-
+//builds the user inputed data and displays to the page to be interacted with
 function buildBreweryResults(data) {
+  //epmties out any existing brewery data for a new result, if desired
   $("#breweryHeader").empty();
   $("#breweryInfo").empty();
 
   console.log(data);
+  //this math variable selects a brewery at random by using math.random on the list of api results from the search data, which is used later
   var breweryNumber = Math.round(Math.random() * data.length - 1);
   console.log(breweryNumber);
+  //collecting sub-data by using the randomly selected brewery
   var selectedBrewery = data[breweryNumber].name;
   var breweryType = data[breweryNumber].brewery_type;
   var breweryCity = data[breweryNumber].city;
   var breweryAddress = data[breweryNumber].street;
   var breweryContact = data[breweryNumber].phone;
   var breweryWebpage = data[breweryNumber].website_url;
-
+  //establishes a list for the data to be posted in
   breweryEl = $("<ul>");
   typeEl = $("<li>");
   cityEl = $("<li>");
@@ -199,7 +200,7 @@ function buildBreweryResults(data) {
       breweryWebpage +
       "</a></li>"
   );
-
+  //establishing classes to style the posted data
   breweryEl.addClass(".info");
   typeEl.addClass(".infoSub");
   cityEl.addClass(".infoSub");
@@ -213,6 +214,7 @@ function buildBreweryResults(data) {
   addressEl.text("Street: " + breweryAddress);
   contactEl.text("Phone #: " + breweryContact);
 
+  //appends all the data to the page to give the user desired results
   $("#breweryHeader").append(breweryEl);
   $("#breweryInfo").append(typeEl);
   $("#breweryInfo").append(cityEl);

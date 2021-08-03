@@ -86,10 +86,10 @@ i:hover {
 }
 
 a:-webkit-any-link {
-    text-decoration: none;
-    color: black;
+    text-decoration: underline;
+    color:blue;
+    font-weight: bold;
 }
-
 .header-container {
     display: flex;
     flex-direction: row;
