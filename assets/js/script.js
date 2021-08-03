@@ -5,8 +5,17 @@ Pseudocode area
 3: place items in appropriate divs
 4:
 */
+function unhideSection() {
+  var r = document.getElementById("random-info");
+  r.removeAttribute("hidden", "");
+}
+
 $("#searchForm").on("submit", function (e) {
   e.preventDefault();
+  // var r = document.getElementById("random-info");
+
+  // r.removeAttribute("hidden", "");
+
   var zip = $("#citySearch").val();
 
   const documenuURL = {
@@ -87,8 +96,13 @@ function buildRestaurantResults(data) {
   $("#restaurantInfo").append(addressEl);
   $("#restaurantInfo").append(contactEl);
   $("#restaurantInfo").append(restaurantWebsiteEl);
-  $("#restaurantInfo").append(restaurantReservationEl);
+  // $("#restaurantInfo").append(restaurantReservationEl);
+
+  unhideSection();
+
 }
+
+
 
 // leslie's
 var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
