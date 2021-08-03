@@ -13,7 +13,8 @@ function hideSection() {
 //onclick to start function
 $("#searchForm").on("submit", function (e) {
   e.preventDefault();
-
+  $(".brew-fav").css("color", "gray");
+  $(".resto-fav").css("color", "gray");
 
   //started with city, changed to zip. Clean up later--
   var zip = $("#citySearch").val();
