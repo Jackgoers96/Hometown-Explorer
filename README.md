@@ -1,6 +1,11 @@
-# Project-1
+# Hometown Explorer
 
-Project One Starting Repo
+Coding Bootcamp Project #1
+
+## Team Members
+Jack Goers
+Andrea Ward
+Leslie Vaillancourt
 
 ## Link to Live Application
 https://jackgoers96.github.io/Hometown-Explorer/
