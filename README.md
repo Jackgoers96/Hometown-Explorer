@@ -2,6 +2,14 @@
 
 Project One Starting Repo
 
+## Link to Live Application
+https://jackgoers96.github.io/Hometown-Explorer/
+
+## User Story
+AS A beer lover and foodie looking for a fun night out in my hometown
+I WANT to search for a random brewery and restaurant
+SO THAT I can have a fun adventure in my hometown exploring new places to eat and drink
+
 ## Preview
 
 ![demo](assets/images/demos.jpg)
