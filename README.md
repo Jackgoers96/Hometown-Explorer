@@ -3,8 +3,8 @@
 Coding Bootcamp Project #1
 
 ## Team Members
-Jack Goers
-Andrea Ward
+Jack Goers, 
+Andrea Ward, 
 Leslie Vaillancourt
 
 ## Link to Live Application
